@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>STru</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="../passS/source/passS/css/passS.css">
+
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
+	<style>
+		body{
+			margin: 0;
+			padding: 0;
+		}
+		.coteSelecModito{
+			height: 100vh;
+			width: 100%;
+			/*background: salmon;*/
+			display:flex;
+			justify-content: center;
+			align-items: center;
+		}
+		.selecModito{
+			background: #444444;
+			color: white;
+			border-radius: 2px;
+			padding: 40px;
+			display: grid;
+			grid-template-columns: 1fr;
+			
+		}
+		.selecModito .opciones{
+			padding: 10px 35px;
+			background: white;
+			color: black;
+			border-radius: 5px;
+			margin: 8px;
+			text-align: center;
+			font-family: 'Poppins', sans-serif;
+			cursor: pointer;
+			transition: 0.8s;
+		}
+		.selecModito .opciones:hover{
+
+			background: linear-gradient(60deg,#444444,black);
+			color: white;
+		}
+
+		.pasarN{
+			height: 0vh;
+			overflow: hidden;
+			transition: 0.9s;
+			
+		}
+
+
+		/*menu*/
+		.coteMenuG{
+			display: none;
+			height: 100vh;
+		}
+
+		
+	</style>
+</head>
+<body>
+
+	<div class="groupSecc">
+		<section class="secciones">
+			<button class="next">siguient</button>
+			<button class="back">anterior</button>
+		</section>
+		<section class="secciones">
+			
+		</section>
+	</div>
+
+	<section >
+		<div class="coteSelecModito">
+			<div class="selecModito">
+				<div class="opciones" mensaje="ola">1 Jugador ;,V</div>
+				<div class="opciones">2 Jugadores</div>
+				<div class="opciones" mensaje="eloo">3 Jugadores</div>
+			</div>
+		</div>
+	</section>
+
+	<section >
+		<div class="coteMenuG" style="">
+			
+		</div>
+	</section>
+	
+	
+	<script type="text/javascript" src="../passS/source/passS/js/passS.js"></script>
+
+	<script type="text/javascript">
+		
+		passC('.groupSecc');
+		
+		function enco(elet){
+			let selecOpcio=document.querySelectorAll(elet)
+			return selecOpcio
+
+		}
+		function enco1(elet){
+			let selecOpcio=document.querySelector(elet)
+			return selecOpcio
+
+		}
+
+		function efPass(esconderV,mostrarV){			
+			document.querySelector(esconderV).className="coteSelecModito pasarN"
+			document.querySelector(mostrarV).style.display='block';
+		}
+
+	
+		enco('.opciones').forEach(opci=>{
+
+			opci.addEventListener('click',function(){
+				
+				let element=this.getAttribute('mensaje')
+				
+
+				efPass('.coteSelecModito','.coteMenuG');
+				
+			});
+		})
+
+		let 
+
+
+			// let selecOpcio=document.querySelectorAll('.opciones')
+			// console.log(selecOpcio)
+			// for(let y=0 ; y <selecOpcio.length;y++){
+			// 	console.log(selecOpcio[y]);
+			// 	selecOpcio[y].addEventListener('click',function(){
+					
+			// 		let element=this.getAttribute('mensaje')
+			// 		console.log(element)
+			// 	});
+			// }
+			
+		
+
+	</script>
+	
+</body>
+</html>

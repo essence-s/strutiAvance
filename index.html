@@ -12,14 +12,22 @@
 		body{
 			margin: 0;
 			padding: 0;
-		}
-		.coteSelecModito{
+		}	
+	</style>
+</head>
+<body>
+	<style>
+		.groupSecc{
 			height: 100vh;
 			width: 100%;
+		}
+		.coteSelecModito{
+			height: 100%;
 			/*background: salmon;*/
 			display:flex;
 			justify-content: center;
 			align-items: center;
+			/*position: relative;*/
 		}
 		.selecModito{
 			background: #444444;
@@ -61,29 +69,107 @@
 			height: 100vh;
 		}
 
+		.conteBtns{
+			position: absolute;
+			bottom: 0;
+			display: flex;
+			justify-content: space-between;
+    		width: 100%;
+		}
+		.secciones{
+			position: relative;
+		}
+
 		
 	</style>
-</head>
-<body>
+
+	<!-- primer cuadro -->
 
 	<div class="groupSecc">
+
 		<section class="secciones">
-			<button class="next">siguient</button>
-			<button class="back">anterior</button>
-		</section>
-		<section class="secciones">
+			<div class="coteSelecModito">
+				<div class="selecModito">
+					<div class="opciones" mensaje="ola">1 Jugador ;,V</div>
+					<div class="opciones">2 Jugadores</div>
+					<div class="opciones" mensaje="eloo">3 Jugadores</div>
+				</div>
+			
+			</div>
+
+			<div class="conteBtns">
+				<button class="next">siguiente</button>	
+			</div>
 			
 		</section>
+
+
+
+
+	<style>
+		
+
+	</style>
+
+	<!-- segundo cuadro -->
+		<section class="secciones">
+			
+			<div class="conteConti">
+				<div class="">
+					<label for="amS">America del Sur</label>
+					<input type="checkbox" class="checkConti" id="amS">
+				</div>
+
+				<div class="">
+					<label for="amN">America del Norte</label>
+					<input type="checkbox" class="checkConti" id="amN">
+				</div>
+
+				<div class="">
+					<label for="Tdos">Todos</label>
+					<input type="checkbox" class="checkConti" id="Tdos">
+				</div>
+				
+				<button id="btnAceptarConti">Aceptar</button>
+
+			</div>
+
+			
+			<div class="conteBtns">				
+				<button class="back">anterior</button>
+				<button class="next">siguiente</button>
+			</div>
+		</section>
+
+
+
+
+
+	<style>
+		
+
+	</style>
+		<section class="secciones">
+			
+				<div class="conteBtns">
+					
+					<button class="back">anterior</button>
+			
+				</div>
+		</section>
+
+
+
+
+
 	</div>
 
+
+
+
+
 	<section >
-		<div class="coteSelecModito">
-			<div class="selecModito">
-				<div class="opciones" mensaje="ola">1 Jugador ;,V</div>
-				<div class="opciones">2 Jugadores</div>
-				<div class="opciones" mensaje="eloo">3 Jugadores</div>
-			</div>
-		</div>
+		
 	</section>
 
 	<section >
@@ -128,22 +214,42 @@
 			});
 		})
 
-		let 
 
+		//INICIO script para la SEGUNDO cuadro
 
-			// let selecOpcio=document.querySelectorAll('.opciones')
-			// console.log(selecOpcio)
-			// for(let y=0 ; y <selecOpcio.length;y++){
-			// 	console.log(selecOpcio[y]);
-			// 	selecOpcio[y].addEventListener('click',function(){
-					
-			// 		let element=this.getAttribute('mensaje')
-			// 		console.log(element)
-			// 	});
-			// }
-			
+		function detecConti(datoinput){
+			let inputs = document.querySelectorAll(datoinput);
+			// console.log(inputs);
+			let dato=[];
+
+			inputs.forEach(input=>{
+				let nomDato=input.getAttribute('id');
+				dato.push({
+					datoConti:nomDato,
+					datoCheck:input.checked
+				});
+
+			});
+			return dato;
+		}
+
+		let datosConti;
+		btnAceptarConti.addEventListener('click',function(){
+			datosConti=detecConti('.checkConti');
+			// console.log(datosConti);
+		});
+
+		//FIN script para la SEGUNDO cuadro
 		
 
+
+		//INICIO script para la TERCER cuadro
+
+		function randomBanderita(){
+
+		}
+
+		//FIN script para la TERCER cuadro
 	</script>
 	
 </body>

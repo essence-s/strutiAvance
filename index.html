@@ -127,10 +127,11 @@
 
 				<div class="">
 					<label for="Tdos">Todos</label>
-					<input type="checkbox" class="checkConti" id="Tdos">
+					<input type="checkbox" id="Tdos">
 				</div>
 				
 				<button id="btnAceptarConti">Aceptar</button>
+				<button id="aleatoriedad">aleatorio</button>
 
 			</div>
 
@@ -220,35 +221,94 @@
 		function detecConti(datoinput){
 			let inputs = document.querySelectorAll(datoinput);
 			// console.log(inputs);
+			let juntarCont=[];
 			let dato=[];
 
-			inputs.forEach(input=>{
-				let nomDato=input.getAttribute('id');
+			let amS=[
+				'Argentina',
+				'Brasil',
+				'Bolivia',
+				'Chile',
+				'Colombia',
+				'Ecuador',
+				'Guyana',
+				'Paraguay',
+				'Perú',
+				'Surinam',
+				'Uruguay',
+				'Venezuela'	
+			]
+			let amN=[
+				'Mexico',
+				'Estados Unidos',
+				'Canada'
+			]
+			juntarCont.push(amS,amN);
+			console.log(juntarCont);
+			console.log(inputs.length);
+			for(let i=0;i<inputs.length;++i){
+				let nomDato=inputs[i].getAttribute('id');
 				dato.push({
 					datoConti:nomDato,
-					datoCheck:input.checked
+					datoCheck:inputs[i].checked,
+					datoP:juntarCont[i]
 				});
-
-			});
+				
+			};
 			return dato;
 		}
 
-		let datosConti;
+		let seleccionados=[];
 		btnAceptarConti.addEventListener('click',function(){
-			datosConti=detecConti('.checkConti');
-			// console.log(datosConti);
+			let datosTodC=detecConti('.checkConti');
+			console.log(datosTodC);
+			
+
+			datosTodC.forEach(da=>{
+				if (da.datoCheck) {
+					seleccionados.push(da.datoP);
+				}
+			});
+			
 		});
 
+		aleatoriedad.addEventListener('click',function(){
+			randomBanderita();
+		});
 		//FIN script para la SEGUNDO cuadro
 		
 
 
 		//INICIO script para la TERCER cuadro
-
-		function randomBanderita(){
-
+		function numRandomEn(min, max) {
+		  return Math.floor( Math.random()*(max - min)) + min;
 		}
+		let restantSelec=[];
+		function randomBanderita(){
+		
 
+			restantSelec=seleccionados;
+
+			console.log(seleccionados);
+			let aleatorio1=0;
+			aleatorio1=numRandomEn(0, seleccionados.length);
+			console.log(aleatorio1);
+			let resultAle=seleccionados[aleatorio1];
+			console.log(resultAle);
+			let aleatorio2=numRandomEn(0, resultAle.length);
+			console.log(resultAle[aleatorio2]);
+			console.log(seleccionados);
+			restantSelec[aleatorio1].splice(aleatorio2,1);
+			console.log(seleccionados);
+			console.log(restantSelec);
+
+			// let arr=[];
+			// console.log(arr.length);
+		}
+		// randomBanderita();
+
+		
+		
 		//FIN script para la TERCER cuadro
 	</script>
 	

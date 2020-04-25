@@ -224,6 +224,8 @@
 			let juntarCont=[];
 			let dato=[];
 
+			let devolver=[];
+
 			let amS=[
 				'Argentina',
 				'Brasil',
@@ -244,8 +246,8 @@
 				'Canada'
 			]
 			juntarCont.push(amS,amN);
-			console.log(juntarCont);
-			console.log(inputs.length);
+			// console.log(juntarCont);
+			// console.log(inputs.length);
 			for(let i=0;i<inputs.length;++i){
 				let nomDato=inputs[i].getAttribute('id');
 				dato.push({
@@ -255,58 +257,98 @@
 				});
 				
 			};
-			return dato;
+			dato.forEach(da=>{
+				if (da.datoCheck) {
+					
+					devolver.push(da.datoP);
+				}
+			});
+			return devolver;
 		}
 
 		let seleccionados=[];
 		btnAceptarConti.addEventListener('click',function(){
 			let datosTodC=detecConti('.checkConti');
 			console.log(datosTodC);
-			
+			seleccionados=datosTodC;
 
-			datosTodC.forEach(da=>{
-				if (da.datoCheck) {
-					seleccionados.push(da.datoP);
-				}
-			});
-			
+			console.log(seleccionados);
 		});
 
-		aleatoriedad.addEventListener('click',function(){
-			randomBanderita();
-		});
+
 		//FIN script para la SEGUNDO cuadro
-		
-
+// 		let resultAlegg=[];
+// console.log(resultAlegg.length)
 
 		//INICIO script para la TERCER cuadro
 		function numRandomEn(min, max) {
 		  return Math.floor( Math.random()*(max - min)) + min;
 		}
 		let restantSelec=[];
-		function randomBanderita(){
+		function randomBanderita(arraySele){
 		
-
-			restantSelec=seleccionados;
-
-			console.log(seleccionados);
+			let seleccionadosDato=arraySele;
 			let aleatorio1=0;
-			aleatorio1=numRandomEn(0, seleccionados.length);
-			console.log(aleatorio1);
-			let resultAle=seleccionados[aleatorio1];
-			console.log(resultAle);
-			let aleatorio2=numRandomEn(0, resultAle.length);
-			console.log(resultAle[aleatorio2]);
-			console.log(seleccionados);
-			restantSelec[aleatorio1].splice(aleatorio2,1);
-			console.log(seleccionados);
-			console.log(restantSelec);
+			let aleatorio2=0;
+			let resultAle=[]
+			let i=0;
+			let indicioVacio=0;
 
-			// let arr=[];
-			// console.log(arr.length);
+			seleccionadosDato.forEach(d=>{
+				if(d.length==0){
+					indicioVacio++;
+				}
+			});
+			if(indicioVacio==2) {
+				return indicioVacio;
+			}
+			else{
+				while(i < 1){
+					aleatorio1=numRandomEn(0, seleccionadosDato.length);
+					resultAle=seleccionadosDato[aleatorio1];
+					if (resultAle.length==0) {
+						console.log('vacioooo')
+					}
+					else{
+						aleatorio2=numRandomEn(0, resultAle.length);
+						i++;
+						
+					}	
+					
+				}
+				return [aleatorio1,aleatorio2];
+			} 
+			
+				
+			
 		}
 		// randomBanderita();
 
+		aleatoriedad.addEventListener('click',function(){
+			let numeRand=randomBanderita(seleccionados)
+			console.log(numeRand)
+			if (numeRand==2) {
+				console.log('vacio todos')
+			}
+			else{
+				console.log(seleccionados[numeRand[0]][numeRand[1]])
+				let banderaElegida=seleccionados[numeRand[0]][numeRand[1]]
+				seleccionados[numeRand[0]].splice(numeRand[1],1);
+				console.log(seleccionados)
+
+				let opciElejir=detecConti('.checkConti')
+				for(let i=0;i<3;i++){	
+					let opciRand=randomBanderita(opciElejir)
+					let nombreOpciEle=opciElejir[opciRand[0]][opciRand[1]]
+					opciElejir[opciRand[0]].splice(opciRand[1],1)
+					console.log(nombreOpciEle);
+					if (nombreOpciEle==banderaElegida) {
+						i--;
+					}
+				}
+			}
+			
+		});
 		
 		
 		//FIN script para la TERCER cuadro

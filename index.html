@@ -322,21 +322,25 @@
 				
 			
 		}
-		// randomBanderita();
 
-		aleatoriedad.addEventListener('click',function(){
-			let numeRand=randomBanderita(seleccionados)
+
+		function datInsert(arryy){
+			let banderaElegida;
+			let dop=[];
+			let numeRand=randomBanderita(arryy);
 			console.log(numeRand)
 			if (numeRand==2) {
 				console.log('vacio todos')
+				return 2;
 			}
 			else{
-				console.log(seleccionados[numeRand[0]][numeRand[1]])
-				let banderaElegida=seleccionados[numeRand[0]][numeRand[1]]
-				seleccionados[numeRand[0]].splice(numeRand[1],1);
-				console.log(seleccionados)
+				console.log(arryy[numeRand[0]][numeRand[1]])
+				banderaElegida=arryy[numeRand[0]][numeRand[1]]
+				arryy[numeRand[0]].splice(numeRand[1],1);
+				console.log(arryy)
 
 				let opciElejir=detecConti('.checkConti')
+				dop=[];
 				for(let i=0;i<3;i++){	
 					let opciRand=randomBanderita(opciElejir)
 					let nombreOpciEle=opciElejir[opciRand[0]][opciRand[1]]
@@ -344,10 +348,43 @@
 					console.log(nombreOpciEle);
 					if (nombreOpciEle==banderaElegida) {
 						i--;
+					}else{
+						dop.push(nombreOpciEle)
+						console.log(dop)
 					}
 				}
+				return [dop,banderaElegida];
 			}
 			
+		}
+
+		// randomBanderita();
+		// let dop=[];
+		// let banderaElegida;
+		let numInter=0,iNI=0;
+		aleatoriedad.addEventListener('click',function(){
+			
+			// seleccionados.forEach(d=>{
+
+			// 	numInter=numInter + d.length;
+			// });
+
+			let interD=setInterval(function(){
+				let dIlet=datInsert(seleccionados);
+				console.log(dIlet);
+				if (dIlet==2) {
+					clearInterval(interD);
+				}else{
+					console.log(dIlet);
+				}
+				
+				// iNI++;
+				
+				// if (iNI==numInter) {
+				// 	clearInterval(interD);
+				// }
+
+			},1000);
 		});
 		
 		

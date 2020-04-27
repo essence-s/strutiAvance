@@ -152,11 +152,13 @@
 	</style>
 		<section class="secciones">
 			
-				<div class="conteBtns">
-					
-					<button class="back">anterior</button>
+			<div id="relojRegresivo" class="notranslate"></div>
 			
-				</div>
+		<div class="conteBtns">
+			
+			<button class="back">anterior</button>
+	
+		</div>
 		</section>
 
 
@@ -273,6 +275,7 @@
 			seleccionados=datosTodC;
 
 			console.log(seleccionados);
+			datInsert(seleccionados);
 		});
 
 
@@ -361,33 +364,49 @@
 		// randomBanderita();
 		// let dop=[];
 		// let banderaElegida;
-		let numInter=0,iNI=0;
-		aleatoriedad.addEventListener('click',function(){
+		// let numInter=0,iNI=0;
+	function pruebas(){
 			
-			// seleccionados.forEach(d=>{
-
-			// 	numInter=numInter + d.length;
-			// });
-
 			let interD=setInterval(function(){
 				let dIlet=datInsert(seleccionados);
-				console.log(dIlet);
+				// console.log(dIlet);
 				if (dIlet==2) {
 					clearInterval(interD);
 				}else{
 					console.log(dIlet);
 				}
-				
-				// iNI++;
-				
-				// if (iNI==numInter) {
-				// 	clearInterval(interD);
-				// }
+				console.log(seleccionados);
+			},1000);
+		}
+		let numInter=20+1;
+		function relojitoRegresivo(lugarRelojRegre){
+			lugarRR=document.querySelector(lugarRelojRegre)
+			let iNI=0;
+			let relojin=setInterval(function(){
+
+				numInter--;
+				if (numInter<=9) {
+					numInter="0"+numInter;	
+				}
+				console.log(numInter);
+				lugarRR.innerHTML="00:"+numInter;
+				if (iNI===parseInt(numInter)) {
+					// clearInterval(relojin);
+					numInter=20+1;
+				}
 
 			},1000);
+		}
+		relojitoRegresivo('#relojRegresivo');
+
+		aleatoriedad.addEventListener('click',function(){
+			let dIlet2=datInsert(seleccionados)
+			numInter=20+1;			// if (dIlet2==2) {
+			// 	clearInterval(interD);
+			// }else{
+			// 	console.log(dIlet);
+			// }
 		});
-		
-		
 		//FIN script para la TERCER cuadro
 	</script>
 	

@@ -17,6 +17,7 @@
 			margin: 0;
 			padding: 0;
 			font-size: 1.2rem;
+			font-weight: 600;
 		}	
 	</style>
 </head>
@@ -38,11 +39,13 @@
 			/*font-family: 'Skranji', cursive;*/
 			font-size: 1.3rem;
 			background: #c52c4f;
-			background-image: url(bban.svg);
+			background-image: url(svg/bban.svg);
 			background-size: 90px 90px;
 			animation:bban 10s linear infinite;
 			max-width: 330px;
 			margin:auto;
+			/*background: linear-gradient( 300deg,#30927f 3%,#ff933f 12%, #440085 118%);*/
+			background: linear-gradient( 300deg,#2a193a 3%,#323647 12%, #009e86 118%);
 		}
 		
 		.groupSecc{
@@ -180,20 +183,22 @@
 		
 		#relojRegresivo{
 			position: absolute;
-		    border: solid 2px #a77dff;
-		    border-radius: 3px;
-		    width: 71px;
-		    height: 26px;
+		    background: linear-gradient(30deg, #ffa200 44%, #fffd20 89%);
+		    width: 74px;
+		    /* border: solid #ffa200 2px; */
+		    border-bottom-left-radius: 15px;
+		    height: 38px;
 		    text-align: center;
-		    right: 10px;
-		    top: 10px;
+		    right: 0;
+		    /* top: 10px; */
 		    display: flex;
 		    justify-content: center;
 		    align-items: center;
-		    color: #03A9F4;
+		    color: white;
 		    font-weight: 600;
-		    font-size: 1.2rem;
+		    font-size: 1.3rem;
 		    line-height: 1;
+		    box-shadow: -2px 4px 2px 0px rgba(0, 0, 0, 0.3);
 		}
 		.ctDS{
 			display: flex;
@@ -205,18 +210,31 @@
 			text-align: center;
 		}
 		.opcBH{
-			margin-bottom: 8px;
-		    border: solid 2px salmon;
-		    padding: 0px 20px 3px 20px;
+			margin-bottom: 14px;
+		    border: solid 5px #037654;
+		    background: #009167;
+		    padding: 10px 20px 11px 20px;
 		    line-height: 1;
 		    display: flex;
 		    justify-content: center;
 		    align-items: center;
 		    border-radius: 3px;
 		    cursor: pointer;
+		    position: relative;
+		    color: white;	
 		}
 		.opcBH:hover{
 			border: solid 2px #444444;
+		}
+		.opcBH .imgL{
+			position: absolute;
+			left: -17px;
+			width: 25px;
+		}
+		.opcBH .imgR{
+			position: absolute;
+			right: -17px;
+			width: 25px;
 		}
 		.lugBan{
 			position: relative;
@@ -232,6 +250,22 @@
 			width: 150px;
 			animation: movim 2.5s cubic-bezier(0.54, 0.9, 0.52, 1.21) infinite;
 			
+		}
+		#aleatoriedad{
+			background: #e33e51;
+    		border: solid #dc3245 5px;
+		    color: white;
+		    padding: 2px 11px;
+		    border-radius: 3px;
+		    font-size: 1.2rem;
+		    font-family: inherit;
+		    text-transform: uppercase;
+		    margin-top: 30px;
+		}
+		#coteOpciones{
+			padding: 27px 30px 12px 30px;
+    		background: #02020214;
+    		border-radius: 5px;
 		}
 		@keyframes movim{
 			0%{
@@ -259,12 +293,12 @@
 			}
 		}
 	</style>
-			<div id="relojRegresivo" class="notranslate"></div>
+			<div id="relojRegresivo" class="notranslate">00:00</div>
 
 			<div class="ctDS">
 				<div class="coteDatoBand">
 					<div class="lugBan">
-						<img class="plaform" src="fsb.svg">
+						<img class="plaform" src="svg/fsb.svg">
 						<div id="banderaR"></div>
 						
 					</div>
@@ -427,8 +461,9 @@
 					indicioVacio++;
 				}
 			});
-			if(indicioVacio==2) {
-				return indicioVacio;
+			indicioVacio=(indicioVacio-seleccionadosDato.length)+1;
+			if(indicioVacio==1) {
+				return 2;
 			}
 			else{
 				while(i < 1){
@@ -552,9 +587,14 @@
 				console.log(naP2);
 				naP2.forEach(d=>{
 					incrusHtml+=`
+						
 						<div class="opcBH" disabled>
+							<object class="imgL" data="svg/opcionL.svg" type="image/svg+xml"></object>
 							${d}
+							<object class="imgR" data="svg/opcionR.svg" type="image/svg+xml"></object>
+							
 						</div>
+						
 					`
 					
 				})

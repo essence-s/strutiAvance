@@ -181,16 +181,16 @@
 		<section class="secciones">
 	<style>
 		
-		#relojRegresivo{
-			position: absolute;
-		    background: linear-gradient(30deg, #ffa200 44%, #fffd20 89%);
+		.contereloj{
+		   	position: absolute;
+		    /* background: linear-gradient(30deg, #ffa200 44%, #fffd20 89%); */
 		    width: 74px;
 		    /* border: solid #ffa200 2px; */
-		    border-bottom-left-radius: 15px;
+		    /* border-bottom-left-radius: 15px; */
 		    height: 38px;
 		    text-align: center;
-		    right: 0;
-		    /* top: 10px; */
+		    right: 23px;
+		    top: 3px;
 		    display: flex;
 		    justify-content: center;
 		    align-items: center;
@@ -198,7 +198,15 @@
 		    font-weight: 600;
 		    font-size: 1.3rem;
 		    line-height: 1;
-		    box-shadow: -2px 4px 2px 0px rgba(0, 0, 0, 0.3);
+		    /* box-shadow: -2px 4px 2px 0px rgba(0, 0, 0, 0.3);*/		
+		}
+		.contereloj .pre{
+			position: relative;
+		}
+		.contereloj img{
+			position: absolute;
+			width: 130px;
+			z-index: -1;
 		}
 		.ctDS{
 			display: flex;
@@ -259,7 +267,7 @@
 		    border-radius: 3px;
 		    font-size: 1.2rem;
 		    font-family: inherit;
-		    text-transform: uppercase;
+		    /*text-transform: uppercase;
 		    margin-top: 30px;
 		}
 		#coteOpciones{
@@ -293,7 +301,11 @@
 			}
 		}
 	</style>
-			<div id="relojRegresivo" class="notranslate">00:00</div>
+			<div class="contereloj">
+				<div id="relojRegresivo" class="notranslate">00:00</div>
+				<img src="svg/reloj.svg">
+			</div>
+			
 
 			<div class="ctDS">
 				<div class="coteDatoBand">

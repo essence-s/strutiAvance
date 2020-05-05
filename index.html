@@ -39,7 +39,8 @@
 			/*font-family: 'Skranji', cursive;*/
 			font-size: 1.3rem;
 			background: #c52c4f;
-			background-image: url(svg/bban.svg);
+			/*background-image: url(svg/bban.svg);*/
+			background-image: url(svg/fondoc2.svg);
 			background-size: 90px 90px;
 			animation:bban 10s linear infinite;
 			max-width: 330px;
@@ -194,7 +195,7 @@
 		    display: flex;
 		    justify-content: center;
 		    align-items: center;
-		    color: white;
+		    color: #02ccd4;
 		    font-weight: 600;
 		    font-size: 1.3rem;
 		    line-height: 1;
@@ -219,8 +220,8 @@
 		}
 		.opcBH{
 			margin-bottom: 14px;
-		    border: solid 5px #037654;
-		    background: #009167;
+		    /*border: solid 5px #037654;*/
+		    /*background: #009167;*/
 		    padding: 10px 20px 11px 20px;
 		    line-height: 1;
 		    display: flex;
@@ -234,16 +235,17 @@
 		.opcBH:hover{
 			border: solid 2px #444444;
 		}
+
+
 		.opcBH .imgL{
 			position: absolute;
-			left: -17px;
-			width: 25px;
+			/*left: -17px;*/
+			width: 225px;
+    		z-index: -1;
 		}
-		.opcBH .imgR{
-			position: absolute;
-			right: -17px;
-			width: 25px;
-		}
+
+
+
 		.lugBan{
 			position: relative;
 		}
@@ -601,9 +603,9 @@
 					incrusHtml+=`
 						
 						<div class="opcBH" disabled>
-							<object class="imgL" data="svg/opcionL.svg" type="image/svg+xml"></object>
+							<object class="imgL" data="svg/opcion2.svg" type="image/svg+xml"></object>
 							${d}
-							<object class="imgR" data="svg/opcionR.svg" type="image/svg+xml"></object>
+							
 							
 						</div>
 						

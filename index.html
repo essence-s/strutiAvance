@@ -7,11 +7,12 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="../passS/source/passS/css/passS.css">
 
-	<link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+	<!-- <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Faster+One&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Patrick+Hand+SC&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Wallpoet&display=swap" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css2?family=Skranji&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Skranji&display=swap" rel="stylesheet"> -->
+	<link href="https://fonts.googleapis.com/css2?family=Nova+Square&display=swap" rel="stylesheet">
 	<style>
 		body{
 			margin: 0;
@@ -22,6 +23,76 @@
 	</style>
 </head>
 <body>
+	<style>
+		.ctMeB{
+			/*background: linear-gradient(180deg, #292727 62%, #101010 );*/
+		    position: absolute;
+		    bottom: 0;
+		    /* height: 50px; */
+		    width: 63%;
+		    margin: auto;
+		    left: 0;
+		    right: 0;
+		}
+		.mebOpc{
+			display: grid;
+		    grid-template-columns: repeat(3,1fr);
+		    height: 43px;
+		    /* margin-top: 5px; */
+		    background: linear-gradient(0deg,#ff0000 0%, #7d042b 12%,#c00024 82%, #ff002f 100%);
+		    /* border-top: 8px solid #1a1c1c; */
+		    position: relative;
+		    /* bottom: 0; */
+		    /* background: #00acb3a8; */
+		    border-radius: 7px;
+
+		}
+		.mebOpc .mS{
+			/*background: #0b705f;*/
+		}
+		.ms1{
+			position: absolute;
+		    bottom: -3px;
+		    display: flex;
+		    justify-content: center;
+		    align-items: center;
+		    background: linear-gradient(135deg, #ffeb00 21%, #fffceb 27%,#fcec30 35%,#fafd2d 51%,#f8c229 80%);
+		    border-top-right-radius: 11px;
+		    border-top-left-radius: 11px;
+		    width: 56px;
+		    height: 44px;
+		    border: solid 4px #55051c;
+		    background-color: white;
+		    /* border-bottom: solid 4px #131112; */
+		    border-radius: 11px;
+		}
+		.msde{
+			width: 47px;
+		    height: 35px;
+		    background: linear-gradient(135deg, #ffc800 21%, #ffec05 27%,#ecd908 35%,#ffe004 51%,#e2f829 80%);
+		    /* border-radius: 8px; */
+		    border-top-right-radius: 8px;
+		    border-top-left-radius: 6px;
+		}
+		.sp{
+			height: 10px;
+		    /* width: 100%; */
+		    /* background: linear-gradient(0deg,#0a0909 0%, #292727 30%, #292727);
+		}
+	</style>
+
+	<div class="ctMeB">
+		<div class="mebOpc">
+			<div class="mS"></div>
+			<div class="mS ms1">
+				<div class="msde"></div>
+			</div>
+			<div class="mS"></div>
+		</div>
+		<div class="sp"></div>
+	</div>
+
+
 	<style>
 		/*@keyframes bban{
 	      0%{
@@ -34,19 +105,20 @@
 		body{
 			/*font-family: 'Jua', sans-serif;*/
 			/*font-family: 'Faster One', cursive;*/
-			font-family: 'Patrick Hand SC', cursive;
+			/*font-family: 'Patrick Hand SC', cursive;*/
 			/*font-family: 'Wallpoet', cursive;*/
 			/*font-family: 'Skranji', cursive;*/
-			font-size: 1.3rem;
-			background: #c52c4f;
+			font-family: 'Nova Square', cursive;
+			font-size: 1.1rem;
+			/*background: #c52c4f;*/
 			/*background-image: url(svg/bban.svg);*/
 			background-image: url(svg/fondoc2.svg);
-			background-size: 90px 90px;
+			background-size: 90px;
 			animation:bban 10s linear infinite;
 			max-width: 330px;
 			margin:auto;
 			/*background: linear-gradient( 300deg,#30927f 3%,#ff933f 12%, #440085 118%);*/
-			background: linear-gradient( 300deg,#2a193a 3%,#323647 12%, #009e86 118%);
+			/*background: linear-gradient( 300deg,#2a193a 3%,#323647 12%, #009e86 118%);*/
 		}
 		
 		.groupSecc{
@@ -114,6 +186,8 @@
 
 		
 	</style>
+
+
 
 	<!-- primer cuadro -->
 
@@ -195,9 +269,9 @@
 		    display: flex;
 		    justify-content: center;
 		    align-items: center;
-		    color: #02ccd4;
+		    color:white;
 		    font-weight: 600;
-		    font-size: 1.3rem;
+		    font-size: 1rem;
 		    line-height: 1;
 		    /* box-shadow: -2px 4px 2px 0px rgba(0, 0, 0, 0.3);*/		
 		}
@@ -219,7 +293,7 @@
 			text-align: center;
 		}
 		.opcBH{
-			margin-bottom: 14px;
+			margin-bottom: 9px;
 		    /*border: solid 5px #037654;*/
 		    /*background: #009167;*/
 		    padding: 10px 20px 11px 20px;
@@ -240,8 +314,9 @@
 		.opcBH .imgL{
 			position: absolute;
 			/*left: -17px;*/
-			width: 225px;
+			width: 205px;
     		z-index: -1;
+    		/*transform: rotateY(180deg);*/
 		}
 
 
@@ -261,21 +336,22 @@
 			animation: movim 2.5s cubic-bezier(0.54, 0.9, 0.52, 1.21) infinite;
 			
 		}
+		
 		#aleatoriedad{
-			background: #e33e51;
-    		border: solid #dc3245 5px;
+			background: url(svg/btnRendirse2.svg);
+		    /* border: solid #dc3245 5px; */
 		    color: white;
-		    padding: 2px 11px;
-		    border-radius: 3px;
+		   	padding: 14px 27px;
+		    border: 0px;
 		    font-size: 1.2rem;
 		    font-family: inherit;
-		    /*text-transform: uppercase;
-		    margin-top: 30px;
+		    position: relative;
+		    background-size: 100% 100%;
 		}
 		#coteOpciones{
-			padding: 27px 30px 12px 30px;
-    		background: #02020214;
-    		border-radius: 5px;
+			padding: 6px 30px 4px 30px;
+    		/*background: #02020214;*/
+    		/*border-radius: 5px;*/
 		}
 		@keyframes movim{
 			0%{
@@ -305,7 +381,7 @@
 	</style>
 			<div class="contereloj">
 				<div id="relojRegresivo" class="notranslate">00:00</div>
-				<img src="svg/reloj.svg">
+				<img src="svg/reloj2.svg">
 			</div>
 			
 
@@ -318,14 +394,19 @@
 					</div>
 					
 					<div id="coteOpciones"></div>
-					<button id="aleatoriedad">siguiente</button>
+
+					
+						<button id="aleatoriedad">Rendirse</button>
+						
+					
+					
 				</div>
 			</div>
 			
 			
 		<div class="conteBtns">
 			
-			<button class="back">anterior</button>
+			<!-- <button class="back">anterior</button> -->
 	
 		</div>
 		</section>
@@ -603,7 +684,7 @@
 					incrusHtml+=`
 						
 						<div class="opcBH" disabled>
-							<object class="imgL" data="svg/opcion2.svg" type="image/svg+xml"></object>
+							<object class="imgL" data="svg/opcion3.svg" type="image/svg+xml"></object>
 							${d}
 							
 							

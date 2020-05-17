@@ -5,7 +5,8 @@
 	<title>STru</title>
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" type="text/css" href="../passS/source/passS/css/passS.css">
+	<link rel="stylesheet" type="text/css" href="source/passS/css/passS.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 	<!-- <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Faster+One&display=swap" rel="stylesheet">
@@ -24,34 +25,60 @@
 </head>
 <body>
 	<style>
+		#confirmS{
+			position: absolute;
+			left: 0;
+			right: 0;
+			top: 0;
+			bottom: 0;
+			width: 200px;
+			height: 100px;
+			z-index: 2;
+			background:white;
+			border-radius: 4px;
+			margin:auto;
+			padding: 15px;
+			text-align: center;
+			display: none;
+		}
+	</style>
+	<div id="confirmS">
+		<div class="textCS">sdad</div>
+		<br>
+		<button class="aceptarS">ACEPTAR</button>
+		<button class="cancelarS">CANCELAR</button>
+	</div>
+
+	<style>
 		.ctMeB{
-			/*background: linear-gradient(180deg, #292727 62%, #101010 );*/
+			/* background: linear-gradient(180deg, #292727 62%, #101010 ); */
 		    position: absolute;
-		    bottom: 0;
+		    bottom: 11px;
 		    /* height: 50px; */
-		    width: 63%;
+		    width: 169px;
 		    margin: auto;
 		    left: 0;
 		    right: 0;
 		}
 		.mebOpc{
 			display: grid;
-		    grid-template-columns: repeat(3,1fr);
-		    height: 43px;
+		    grid-template-columns: repeat(3,51px);
+		    justify-content: center;
+		    /* height: 35px; */
 		    /* margin-top: 5px; */
-		    background: linear-gradient(0deg,#ff0000 0%, #7d042b 12%,#c00024 82%, #ff002f 100%);
 		    /* border-top: 8px solid #1a1c1c; */
-		    position: relative;
-		    /* bottom: 0; */
+		    
+		    /*bottom: -3px;*/
 		    /* background: #00acb3a8; */
-		    border-radius: 7px;
+		    
 
 		}
 		.mebOpc .mS{
 			/*background: #0b705f;*/
+			    margin: auto;
 		}
-		.ms1{
-			position: absolute;
+		.ms1,.ms2,.ms3{
+			/*position: absolute;*/
 		    bottom: -3px;
 		    display: flex;
 		    justify-content: center;
@@ -59,35 +86,64 @@
 		    background: linear-gradient(135deg, #ffeb00 21%, #fffceb 27%,#fcec30 35%,#fafd2d 51%,#f8c229 80%);
 		    border-top-right-radius: 11px;
 		    border-top-left-radius: 11px;
-		    width: 56px;
-		    height: 44px;
+		    width: 41px;
+		    height: 34px;
 		    border: solid 4px #55051c;
 		    background-color: white;
 		    /* border-bottom: solid 4px #131112; */
 		    border-radius: 11px;
 		}
-		.msde{
-			width: 47px;
-		    height: 35px;
+		.ms1 .msde,.ms2 .msde,.ms3 .msde{
+			width: 33px;
+		    height: 27px;
 		    background: linear-gradient(135deg, #ffc800 21%, #ffec05 27%,#ecd908 35%,#ffe004 51%,#e2f829 80%);
-		    /* border-radius: 8px; */
-		    border-top-right-radius: 8px;
-		    border-top-left-radius: 6px;
+		    border-radius: 4px;
+		    /* border-top-right-radius: 8px; */
+		    /*border-top-left-radius: 6px;*/
+		    display: flex;
+		    justify-content: center;
 		}
+		.ms1 .msde,.ms3 .msde{
+			align-items: center;
+		}
+		.ms1 .msde i,.ms2 .msde i,.ms3 .msde i{
+			font-size: 1.45rem;
+		    color: #720428;
+		}
+		.ms2 .msde i{
+			line-height: 1.2;
+		}
+		
 		.sp{
-			height: 10px;
-		    /* width: 100%; */
-		    /* background: linear-gradient(0deg,#0a0909 0%, #292727 30%, #292727);
+			background: linear-gradient(0deg,#e00000 0%, #980327 14%,#b00022 90%, #ff0000 100%);
+			border-radius: 7px;
+			height: 35px;
+			position: absolute;
+			z-index: -1;
+			bottom: 2px;
+			width: 100%;
 		}
 	</style>
 
 	<div class="ctMeB">
 		<div class="mebOpc">
-			<div class="mS"></div>
+			
 			<div class="mS ms1">
-				<div class="msde"></div>
+				<div class="msde">
+					<i class="fa fa-users" aria-hidden="true"></i>
+				</div>
 			</div>
-			<div class="mS"></div>
+			<div class="mS ms2">
+				<div class="msde">
+					<i class="fa fa-puzzle-piece" aria-hidden="true"></i>
+				</div>
+			</div>
+			<div class="mS ms3">
+				<div class="msde">
+					<i class="fa fa-gamepad" aria-hidden="true"></i>
+				</div>
+			</div>
+			
 		</div>
 		<div class="sp"></div>
 	</div>
@@ -305,6 +361,7 @@
 		    cursor: pointer;
 		    position: relative;
 		    color: white;	
+		    font-size: 1rem;
 		}
 		.opcBH:hover{
 			border: solid 2px #444444;
@@ -314,7 +371,7 @@
 		.opcBH .imgL{
 			position: absolute;
 			/*left: -17px;*/
-			width: 205px;
+			width: 195px;
     		z-index: -1;
     		/*transform: rotateY(180deg);*/
 		}
@@ -341,9 +398,9 @@
 			background: url(svg/btnRendirse2.svg);
 		    /* border: solid #dc3245 5px; */
 		    color: white;
-		   	padding: 14px 27px;
+		    padding: 7px 8px;
 		    border: 0px;
-		    font-size: 1.2rem;
+		    font-size: 0.9rem;
 		    font-family: inherit;
 		    position: relative;
 		    background-size: 100% 100%;
@@ -378,7 +435,76 @@
 				opacity: 1;
 			}
 		}
+
+		.ctMensajePuntP{
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			/*z-index: 1;*/
+		}
+		.ctMensajePuntP .mMP{
+				
+			width: 0%;
+			height: 0%;
+			background: white;
+			/*animation:aparicionR 0.9s ease-out 5s forwards;*/
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			overflow:hidden;
+			border-radius:5px;
+			/*animation: desaparecerR 0.7s ease-out forwards;*/
+			
+		}
+		.ctMensajePuntP .mMP .date{
+			min-width: 200px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-direction: column;
+			
+		}
+		.ctMensajePuntP .mMP .date button{
+			background: #444444;
+			color: white;
+			border: 0px;
+		}
+		@keyframes aparicionR{
+			0%{
+				height: 0%;width: 0%;border-radius:0px;opacity: 0;
+			}
+			50%{
+				height: 99%;width: 99%;opacity: 1;
+			}
+			100%{
+				height: 80%;width: 80%;border-radius:5px;
+			}
+		}
+		@keyframes desaparecerR{
+			0%{
+				height: 80%;width: 80%;border-radius:5px;
+				
+			}
+			50%{
+				height: 99%;width: 99%;
+			}
+			100%{
+				height: 0%;width: 0%;border-radius:0px;
+			}
+		}
 	</style>
+			<div class="ctMensajePuntP">
+				<div class="mMP">
+					<div class="date">
+						<p>PUNTOS : 10PT</p>
+						<button>SERGUIR</button>
+					</div>
+				</div>
+			</div>
+
 			<div class="contereloj">
 				<div id="relojRegresivo" class="notranslate">00:00</div>
 				<img src="svg/reloj2.svg">
@@ -432,290 +558,9 @@
 	</section>
 	
 	
-	<script type="text/javascript" src="../passS/source/passS/js/passS.js"></script>
+	<script type="text/javascript" src="source/passS/js/passS.js"></script>
 
-	<script type="text/javascript">
-		
-		passC('.groupSecc');
-		
-		function enco(elet){
-			let selecOpcio=document.querySelectorAll(elet)
-			return selecOpcio
-
-		}
-		function enco1(elet){
-			let selecOpcio=document.querySelector(elet)
-			return selecOpcio
-
-		}
-
-		function efPass(esconderV,mostrarV){			
-			document.querySelector(esconderV).className="coteSelecModito pasarN"
-			document.querySelector(mostrarV).style.display='block';
-		}
-
-	
-		enco('.opciones').forEach(opci=>{
-
-			opci.addEventListener('click',function(){
-				
-				let element=this.getAttribute('mensaje')
-				
-
-				efPass('.coteSelecModito','.coteMenuG');
-				
-			});
-		})
-
-
-		//INICIO script para la SEGUNDO cuadro
-
-		function detecConti(datoinput){
-			let inputs = document.querySelectorAll(datoinput);
-			// console.log(inputs);
-			let juntarCont=[];
-			let dato=[];
-
-			let devolver=[];
-
-			let amS=[
-				'Argentina',
-				'Brasil',
-				'Bolivia',
-				'Chile',
-				'Colombia',
-				'Ecuador',
-				'Guyana',
-				'Paraguay',
-				'Perú',
-				'Surinam',
-				'Uruguay',
-				'Venezuela'	
-			]
-			let amN=[
-				'Mexico',
-				'Estados Unidos',
-				'Canada',
-				'Alaska'
-			]
-			juntarCont.push(amS,amN);
-			// console.log(juntarCont);
-			// console.log(inputs.length);
-			for(let i=0;i<inputs.length;++i){
-				let nomDato=inputs[i].getAttribute('id');
-				dato.push({
-					datoConti:nomDato,
-					datoCheck:inputs[i].checked,
-					datoP:juntarCont[i]
-				});
-				
-			};
-			dato.forEach(da=>{
-				if (da.datoCheck) {
-					
-					devolver.push(da.datoP);
-				}
-			});
-			return devolver;
-		}
-
-		let seleccionados=[];
-		btnAceptarConti.addEventListener('click',function(){
-			let datosTodC=detecConti('.checkConti');
-			console.log(datosTodC);
-			seleccionados=datosTodC;
-
-			console.log(seleccionados);
-			let dIlet2=datPorInsert(seleccionados);
-			insertDatHtml(dIlet2);
-			clearInterval(relojin);
-			relojitoRegresivo('#relojRegresivo');
-		});
-
-
-		//FIN script para la SEGUNDO cuadro
-// 		let resultAlegg=[];
-// console.log(resultAlegg.length)
-
-		//INICIO script para la TERCER cuadro
-		function numRandomEn(min, max) {
-		  return Math.floor( Math.random()*(max - min)) + min;
-		}
-		let restantSelec=[];
-		function randomBanderita(arraySele){
-		
-			let seleccionadosDato=arraySele;
-			let aleatorio1=0;
-			let aleatorio2=0;
-			let resultAle=[]
-			let i=0;
-			let indicioVacio=0;
-
-			seleccionadosDato.forEach(d=>{
-				if(d.length==0){
-					indicioVacio++;
-				}
-			});
-			indicioVacio=(indicioVacio-seleccionadosDato.length)+1;
-			if(indicioVacio==1) {
-				return 2;
-			}
-			else{
-				while(i < 1){
-					aleatorio1=numRandomEn(0, seleccionadosDato.length);
-					resultAle=seleccionadosDato[aleatorio1];
-					if (resultAle.length==0) {
-						console.log('vacioooo')
-					}
-					else{
-						aleatorio2=numRandomEn(0, resultAle.length);
-						i++;
-						
-					}	
-					
-				}
-				return [aleatorio1,aleatorio2];
-			} 
-			
-				
-			
-		}
-
-
-		function datPorInsert(arryy){
-			let banderaElegida;
-			let dop=[];
-			let numeRand=randomBanderita(arryy);
-			console.log(numeRand)
-			if (numeRand==2) {
-				console.log('vacio todos')
-				return 2;
-			}
-			else{
-				console.log(arryy[numeRand[0]][numeRand[1]])
-				banderaElegida=arryy[numeRand[0]][numeRand[1]]
-				arryy[numeRand[0]].splice(numeRand[1],1);
-				console.log(arryy)
-
-				let opciElejir=detecConti('.checkConti')
-				dop=[];
-				for(let i=0;i<3;i++){	
-					let opciRand=randomBanderita(opciElejir)
-					let nombreOpciEle=opciElejir[opciRand[0]][opciRand[1]]
-					opciElejir[opciRand[0]].splice(opciRand[1],1)
-					console.log(nombreOpciEle);
-					if (nombreOpciEle==banderaElegida) {
-						i--;
-					}else{
-						dop.push(nombreOpciEle)
-						console.log(dop)
-					}
-				}
-				return [dop,banderaElegida];
-			}
-			
-		}
-
-		// randomBanderita();
-		// let dop=[];
-		// let banderaElegida;
-		// let numInter=0,iNI=0;
-	function pruebas(){
-			
-			let interD=setInterval(function(){
-				let dIlet=datPorInsert(seleccionados);
-				// console.log(dIlet);
-				if (dIlet==2) {
-					clearInterval(interD);
-				}else{
-					console.log(dIlet);
-				}
-				console.log(seleccionados);
-			},1000);
-		}
-		
-		let relojin;
-		function relojitoRegresivo(lugarRelojRegre){
-			
-			let numInter=20+1;
-			lugarRR=document.querySelector(lugarRelojRegre)
-			let iNI=0;
-			relojin=setInterval(function(){
-
-				numInter--;
-				if (numInter<=9) {
-					numInter="0"+numInter;	
-				}
-				// console.log(numInter);
-				lugarRR.innerHTML="00:"+numInter;
-				if (iNI===parseInt(numInter)) {
-					clearInterval(relojin);
-					// numInter=20+1;
-					return 2;
-				}else{
-					return 1;
-				}
-
-			},1000);
-		}
-		
-
-
-		function insertDatHtml(arryyD){
-			let incrusHtml="";
-			if (arryyD==2) {
-				console.log('vacio 2 :V');
-			}else{
-				let naP=arryyD[0];
-				console.log(naP);
-				naP.push(arryyD[1]);
-				let maximus=naP.length;
-				let naP2=[];
-				console.log(naP);
-				for(let i=0;i<maximus;i++){
-					
-					let nA=numRandomEn(0, naP.length);
-					naP2.push(naP[nA]);
-					naP.splice(nA,1);
-
-				};
-				console.log(naP2);
-				naP2.forEach(d=>{
-					incrusHtml+=`
-						
-						<div class="opcBH" disabled>
-							<object class="imgL" data="svg/opcion3.svg" type="image/svg+xml"></object>
-							${d}
-							
-							
-						</div>
-						
-					`
-					
-				})
-			}
-			coteOpciones.innerHTML=incrusHtml;
-			banderaR.innerHTML=arryyD[1];
-		}
-
-		aleatoriedad.addEventListener('click',function(){
-			let dIlet2=datPorInsert(seleccionados)
-			
-			insertDatHtml(dIlet2);
-			console.log(dIlet2);
-			
-			// numInter=20+1;
-			clearInterval(relojin);
-			relojitoRegresivo('#relojRegresivo');
-			let maRot=document.querySelector('.ctDS');
-			maRot.style.animation='rotL 2s';
-			setTimeout(function(){
-				maRot.style.animation='';
-			},2000);
-			
-		});
-		//FIN script para la TERCER cuadro
-	</script>
+	<script type="text/javascript" src="source/app/app.js"></script>
 	
 </body>
 </html>

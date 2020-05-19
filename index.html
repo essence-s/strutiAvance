@@ -171,7 +171,7 @@
 			background-image: url(svg/fondoc2.svg);
 			background-size: 90px;
 			animation:bban 10s linear infinite;
-			max-width: 330px;
+			max-width: 630px;
 			margin:auto;
 			/*background: linear-gradient( 300deg,#30927f 3%,#ff933f 12%, #440085 118%);*/
 			/*background: linear-gradient( 300deg,#2a193a 3%,#323647 12%, #009e86 118%);*/
@@ -495,11 +495,34 @@
 				height: 0%;width: 0%;border-radius:0px;
 			}
 		}
+
+		.coteTablaPtns{
+			position: absolute;
+			top:5px;
+			left:5px;
+		}
+		.tablaPtns{
+			font-size: 0.7rem;
+		    font-weight: 600;
+		    background: #ba1145;
+		    color: white;
+		    border-radius: 3px;
+		    text-align: center;
+		    border-collapse: collapse !important;
+		}
+		.tablaPtns tr .lineWhite{
+			border-right: solid 1px white;
+		}
+		.tablaPtns thead tr td{
+			border-bottom: solid 1px white;
+		}
+		
 	</style>
 			<div class="ctMensajePuntP">
 				<div class="mMP">
 					<div class="date">
-						<p>PUNTOS : 10PT</p>
+						<h1></h1>
+						<p>PUNTOS : <span>10</span>PT</p>
 						<button>SERGUIR</button>
 					</div>
 				</div>
@@ -510,6 +533,19 @@
 				<img src="svg/reloj2.svg">
 			</div>
 			
+			<div class="coteTablaPtns">
+				<table class="tablaPtns">
+					<thead>
+						<tr>
+							<td class="lineWhite">NOMBRE</td>
+							<td>PTNS</td>
+						</tr>
+					</thead>
+					<tbody>
+						
+					</tbody>
+				</table>
+			</div>
 
 			<div class="ctDS">
 				<div class="coteDatoBand">

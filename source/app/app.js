@@ -4,16 +4,27 @@
 		constructor(numPlayers){	
 			this.numPlayers=numPlayers;
 			this.dataArrayPl=[];
+			this.jugadorActual=0;
 		}
 		getArrayPlayers(){
 			return this.dataArrayPl;
+		}
+		getJugadorActual(){
+			return this.jugadorActual;
+		}
+		siguienteJugador(){
+			if (this.jugadorActual==this.numPlayers-1) {
+				this.jugadorActual=0;
+			}else{
+				this.jugadorActual=this.jugadorActual+1;
+			}
 		}
 		declarar(){
 			
 			for(let i=0;i<this.numPlayers;i++){
 
 				this.dataArrayPl.push({
-					nombre:'SIN NOMBRE '+i,
+					nombre:'JUGADOR'+i+'',
 					puntos:0
 				})
 			}
@@ -37,6 +48,8 @@
 	}
 	let dtP=new playersData(3);
 	dtP.declarar();
+	// dtP.siguienteJugador();	 
+	// console.log(dtP.getJugadorActual());
 //dasddd	
 	function enco(elet){
 		let selecOpcio=document.querySelectorAll(elet)
@@ -360,12 +373,13 @@ function pruebas(){
 		coteOpciones.innerHTML=incrusHtml;
 		banderaR.innerHTML=arryyD[1];
 		banderaR.setAttribute('NombreBandera',arryyD[1]);
-		clickOpcionesG()
+		clickOpcionesG();
 	}
 
 	let lugPnt=document.querySelector('.ctMensajePuntP .mMP');
 	let btnLPnt=lugPnt.querySelector('.date button');
-	let lugarPunt=lugPnt.querySelector('.date p');
+	let lugarPunt=lugPnt.querySelector('.date p span');
+	let lugarNombre=lugPnt.querySelector('.date h1');
 	aleatoriedad.addEventListener('click',async function(){	
 
 		let date= await confirmS('RENDIRSE ENSERIO? ........').then(r=>{return r});
@@ -397,6 +411,18 @@ function pruebas(){
 
 	function clickOpcionesG(){
 
+		let tablaPtns=document.querySelector('.tablaPtns tbody');
+		let incrust='';
+		dtP.getArrayPlayers().forEach(r=>{
+			incrust+=`		
+					<tr>
+						<td class="notranslate lineWhite">${r.nombre}</td>
+						<td class="notranslate">${r.puntos}</td>
+					</tr>
+			`
+		})
+		tablaPtns.innerHTML=incrust;
+
 		let clickO=document.querySelectorAll('.opcBH');
 		let banderaR=document.querySelector('#banderaR');
 		let nombrebanderaR=banderaR.getAttribute('NombreBandera');
@@ -408,8 +434,11 @@ function pruebas(){
 				if(datoNombre==nombrebanderaR){
 					console.log('Correcto!!!')
 					clearInterval(relojin);
-					dtP.sumarPuntos(1,1)
-					lugarPunt.innerHTML=dtP.getArrayPlayers()[1].puntos;
+					
+					dtP.sumarPuntos(dtP.getJugadorActual(),1);
+					lugarNombre.innerHTML=dtP.getArrayPlayers()[dtP.getJugadorActual()].nombre;
+					lugarPunt.innerHTML=dtP.getArrayPlayers()[dtP.getJugadorActual()].puntos;
+					dtP.siguienteJugador();
 					lugPnt.style.zIndex='1';
 					lugPnt.style.animation='aparicionR 0.9s ease-out forwards';
 					
@@ -417,7 +446,9 @@ function pruebas(){
 					console.log('Incorrecto!!!')
 					clearInterval(relojin);
 					// dtP.sumarPuntos(1,1)
-					lugarPunt.innerHTML=dtP.getArrayPlayers()[1].puntos;
+					lugarNombre.innerHTML=dtP.getArrayPlayers()[dtP.getJugadorActual()].nombre;
+					lugarPunt.innerHTML=dtP.getArrayPlayers()[dtP.getJugadorActual()].puntos;
+					dtP.siguienteJugador();
 					lugPnt.style.zIndex='1';
 					lugPnt.style.animation='aparicionR 0.9s ease-out forwards';
 				}

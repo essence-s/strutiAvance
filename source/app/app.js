@@ -1,10 +1,13 @@
 	passC('.groupSecc');
 	//dasddd
 	class playersData{
-		constructor(numPlayers){	
-			this.numPlayers=numPlayers;
+		constructor(){	
+			this.numPlayers=0;
 			this.dataArrayPl=[];
 			this.jugadorActual=0;
+		}
+		cantJugadores(numPlayers){
+			this.numPlayers=numPlayers;
 		}
 		getArrayPlayers(){
 			return this.dataArrayPl;
@@ -20,10 +23,11 @@
 			}
 		}
 		declarar(){
-			
+			this.dataArrayPl=[];
 			for(let i=0;i<this.numPlayers;i++){
 
 				this.dataArrayPl.push({
+					idJ:i,
 					nombre:'JUGADOR'+i+'',
 					puntos:0
 				})
@@ -35,7 +39,8 @@
 			let cantiPropi=io[idPlayer];
 			let puntosActual=cantiPropi.puntos;
 			// console.log(Object.values(cantiPropi));
-			io.splice(idPlayer,1,{nombre:newNombre,puntos:puntosActual})
+			// io.splice(idPlayer,1,{nombre:newNombre,puntos:puntosActual})
+			io[idPlayer].nombre=newNombre;
 		}
 
 		sumarPuntos(idPlayer,puntosS){
@@ -43,11 +48,31 @@
 			let cantiPropi=io[idPlayer];
 			let nombreActual=cantiPropi.nombre;
 			let puntosSumados=cantiPropi.puntos+puntosS;
-			io.splice(idPlayer,1,{nombre:nombreActual,puntos:puntosSumados})
+			// io.splice(idPlayer,1,{nombre:nombreActual,puntos:puntosSumados})
+			io[idPlayer].puntos=puntosSumados;
 		}
 	}
-	let dtP=new playersData(3);
-	dtP.declarar();
+	tiempoEsco.addEventListener('input',function(){
+		// console.log(this.value)
+		textTE.value=this.value;
+
+	});
+	//INICIO script para la PRIMER cuadro
+	 
+	//FIN script para la PRIMER cuadro
+	let dtP=new playersData();
+	
+	// dtP.cambiarNombre(0,'red')
+	let opciJugaInicio=document.querySelectorAll('.opciones');
+	opciJugaInicio.forEach(oji=>{
+		oji.addEventListener('click',function(){
+			let elementS=this.getAttribute('mensaje');
+			dtP.cantJugadores(elementS);
+			dtP.declarar();
+			cambioNombreFunc();
+		})
+	})
+
 	// dtP.siguienteJugador();	 
 	// console.log(dtP.getJugadorActual());
 //dasddd	
@@ -67,7 +92,24 @@
 		document.querySelector(mostrarV).style.display='block';
 	}
 
-
+	function cerrarM(lugM){
+		let lugs=document.querySelector(lugM)
+		let elementC=document.createElement('div')
+		let attrA=document.createAttribute('id')
+		attrA.value='espaciMo'
+		elementC.setAttributeNode(attrA)
+		lugs.insertBefore(elementC,lugs.firstChild)
+		let espaciMo=lugs.querySelector('#espaciMo')
+		espaciMo.style.width='100%'
+		espaciMo.style.height='100%'
+		espaciMo.style.background='#00000091'
+		espaciMo.addEventListener('click',function(){
+			lugs.style.display='none';
+			// lugs.style.animation='desaparecerR 0.7s ease-out forwards';
+			
+		})
+		
+	}
 	// confirmacion s o n
 	
 	function confirmS(texto){
@@ -96,8 +138,9 @@
 	// confirmS('texto').then(function(rr){
 	// 	return rr;
 	// })
+
  
- async function ejem(){
+ 	async function ejem(){
  	let date= await confirmS('texto').then(function(rr){
 		return rr;
 	})
@@ -109,46 +152,31 @@
 	}
 	return 'dsad';
  }
-// ejem();
 
 
-// let ola=false;
-// 	ola=confirmS('texto').then(function(rr){
-// 		return rr;
-// 		// console.log(ola);
-// 	});
-
-// console.log(ola);
-
-	// function rr(result){
-	// 	return result;
-	// }
-	// function saludar(nombre) {
-	//   alert('Hola ' + nombre);
-	// }
-
-	// function procesarEntradaUsuario(callback) {
-	//   var nombre = prompt('Por favor ingresa tu nombre.');
-	//   callback(nombre);
-	// }
-
-	// procesarEntradaUsuario(saludar);
-
-	enco('.opciones').forEach(opci=>{
-
-		opci.addEventListener('click',function(){
-			
-			let element=this.getAttribute('mensaje')
-			
-
-			efPass('.coteSelecModito','.coteMenuG');
-			
-		});
-	})
+	
 
 
 	//INICIO script para la SEGUNDO cuadro
+	tdos.addEventListener('click',function(){
+		let inputs = document.querySelectorAll('.checkConti');
+		let bole=this.checked;
+		if(bole==true) {
+			inputs.forEach(input=>{
+				if(input.checked==false){
+					input.click();
+				}
+			})
+		}
+		else if(bole==false) {
+			inputs.forEach(input=>{
+				if(input.checked==true){
+					input.click();
+				}		
+			})
+		}
 
+	})
 	function detecConti(datoinput){
 		let inputs = document.querySelectorAll(datoinput);
 		// console.log(inputs);
@@ -208,10 +236,59 @@
 		let dIlet2=datPorInsert(seleccionados);
 		insertDatHtml(dIlet2);
 		clearInterval(relojin);
+		numInterPRI=parseInt(textTE.value);
 		relojitoRegresivo('#relojRegresivo');
 	});
 
+	function cambioNombreFunc(){
+		try{
+		
+		let lugar=document.querySelector('.nombreJugadores table tbody')
+		let insert='';
+		dtP.getArrayPlayers().forEach(r=>{
+			insert+=`
+			<tr idJugadores='${r.idJ}'>
+				<td>${r.nombre}</td>
+				<td class="edit">cambiar</td>
+			</tr>
+			`
+		});
+		lugar.innerHTML=insert;
+		editC=document.querySelectorAll('.edit')
 
+		editC.forEach(ed=>{
+		ed.addEventListener('click',function(){
+			idJ=this.parentElement.getAttribute('idJugadores');			
+			mdal.style.display='block';
+			input.value=dtP.getArrayPlayers()[idJ].nombre
+			input.focus();
+		})
+	})
+		}catch(e){
+			console.log(e);
+		}
+	}
+	let editC;
+	
+	editC=document.querySelectorAll('.edit')
+	let mdal=document.querySelector('.coteModalCambioNombre')
+	let idJ;
+	let input=document.querySelector('.coteModalCambioNombre input')
+	cambioNombreFunc();
+	cerrarM('.coteModalCambioNombre');
+
+	let aceptMdal=document.querySelector('.coteModalCambioNombre form')
+	aceptMdal.addEventListener('submit',function(e){
+		try{
+		e.preventDefault();
+		mdal.style.display='none';
+		let nuevoNom=input.value;
+		dtP.cambiarNombre(idJ,nuevoNom);
+		cambioNombreFunc();
+		}catch(e){
+			console.log(e);
+		}
+	})
 	//FIN script para la SEGUNDO cuadro
 // 		let resultAlegg=[];
 // console.log(resultAlegg.length)
@@ -314,9 +391,10 @@ function pruebas(){
 	}
 	
 	let relojin;
+	let numInterPRI;
 	function relojitoRegresivo(lugarRelojRegre){
 		
-		let numInter=20+1;
+		let numInter=numInterPRI+1;
 		lugarRR=document.querySelector(lugarRelojRegre)
 		let iNI=0;
 		relojin=setInterval(function(){
@@ -329,7 +407,12 @@ function pruebas(){
 			lugarRR.innerHTML="00:"+numInter;
 			if (iNI===parseInt(numInter)) {
 				clearInterval(relojin);
-				// numInter=20+1;
+
+				lugarNombre.innerHTML=dtP.getArrayPlayers()[dtP.getJugadorActual()].nombre;
+				lugarPunt.innerHTML=dtP.getArrayPlayers()[dtP.getJugadorActual()].puntos;
+				dtP.siguienteJugador();
+				lugPnt.style.zIndex='1';
+				lugPnt.style.animation='aparicionR 0.3s ease forwards';
 				return 2;
 			}else{
 				return 1;
@@ -386,9 +469,12 @@ function pruebas(){
 
 		if (date){
 			clearInterval(relojin);
-			lugarPunt.innerHTML=dtP.getArrayPlayers()[1].puntos;
+			
+			lugarNombre.innerHTML=dtP.getArrayPlayers()[dtP.getJugadorActual()].nombre;
+			lugarPunt.innerHTML=dtP.getArrayPlayers()[dtP.getJugadorActual()].puntos;
+			dtP.siguienteJugador();
 			lugPnt.style.zIndex='1';
-			lugPnt.style.animation='aparicionR 0.9s ease-out forwards';
+			lugPnt.style.animation='aparicionR 0.3s ease forwards';
 		}
 	});
 
@@ -404,7 +490,7 @@ function pruebas(){
 		// 	maRot.style.animation='';
 		// },2000);
 
-		lugPnt.style.animation='desaparecerR 0.7s ease-out forwards';
+		lugPnt.style.animation='desaparecerR 0.4s ease-out forwards';
 	});
 
 
@@ -440,7 +526,7 @@ function pruebas(){
 					lugarPunt.innerHTML=dtP.getArrayPlayers()[dtP.getJugadorActual()].puntos;
 					dtP.siguienteJugador();
 					lugPnt.style.zIndex='1';
-					lugPnt.style.animation='aparicionR 0.9s ease-out forwards';
+					lugPnt.style.animation='aparicionR 0.3s ease forwards';
 					
 				}else{
 					console.log('Incorrecto!!!')
@@ -450,7 +536,7 @@ function pruebas(){
 					lugarPunt.innerHTML=dtP.getArrayPlayers()[dtP.getJugadorActual()].puntos;
 					dtP.siguienteJugador();
 					lugPnt.style.zIndex='1';
-					lugPnt.style.animation='aparicionR 0.9s ease-out forwards';
+					lugPnt.style.animation='aparicionR 0.4s ease-out forwards';
 				}
 			})
 
@@ -474,3 +560,13 @@ function pruebas(){
 
 	
 	//FIN script para la TERCER cuadro
+
+	// parte insert PASS class expass
+	let expass=document.querySelectorAll('.expass')
+	expass.forEach((pass,n)=>{
+		pass.addEventListener('click',function(){
+			// let ele=this;
+			let lug =document.querySelector('.conteSecciones')
+			lug.style.right=n+'00%';
+		});
+	})
